@@ -11,13 +11,4 @@ CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 
 
-blacklist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH)$'}
-if [ -d "$ENV_DIR" ]; then
-  for e in $(ls $ENV_DIR); do
-    echo "$e" | grep -qvE "$blacklist_regex" &&
-      export "$e=$(cat $ENV_DIR/$e)"
-    :
-  done
-fi
-
 cd $BUILD_DIR && bin/rails api:documentation
