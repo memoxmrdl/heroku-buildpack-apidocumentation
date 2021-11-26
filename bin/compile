@@ -20,4 +20,4 @@ if [ -d "$ENV_DIR" ]; then
   done
 fi
 
-cd $BUILD_DIR && bundle exec rake api:documentation
+cd $BUILD_DIR && bin/rails api:documentation
